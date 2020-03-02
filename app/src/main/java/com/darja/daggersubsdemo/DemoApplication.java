@@ -4,8 +4,8 @@ import android.app.Application;
 
 import com.darja.daggersubsdemo.di.DaggerDemoAppComponent;
 import com.darja.daggersubsdemo.di.DemoAppComponent;
-import com.darja.feature_package.di.PackagesSubcomponent;
-import com.darja.feature_package.di.PackagesSubcomponentProvider;
+import com.darja.daggersubsdemo.packages.di.PackagesSubcomponent;
+import com.darja.daggersubsdemo.packages.di.PackagesSubcomponentProvider;
 
 public class DemoApplication extends Application implements PackagesSubcomponentProvider {
     DemoAppComponent appComponent;

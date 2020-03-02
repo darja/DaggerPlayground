@@ -1,6 +1,6 @@
 package com.darja.daggersubsdemo.di;
 
-import com.darja.feature_package.di.PackagesSubcomponent;
+import com.darja.daggersubsdemo.packages.di.PackagesSubcomponent;
 
 import dagger.Module;
 

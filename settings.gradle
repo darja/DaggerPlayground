@@ -1,3 +1,4 @@
 rootProject.name='DaggerSubcomponentsDemo'
 include ':app'
 include ':feature_package'
+include ':core'
