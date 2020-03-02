@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.darja.daggersubsdemo.packages.R;
 import com.darja.daggersubsdemo.packages.di.PackagesSubcomponent;
@@ -21,7 +22,9 @@ import javax.inject.Inject;
 
 public class PackageListFragment extends Fragment {
     @Inject
-    protected GetPackagesUseCase useCase;
+    protected ViewModelProvider.Factory viewModelFactory;
+
+    private PackageListViewModel viewModel;
 
     @Nullable
     @Override
@@ -47,6 +50,7 @@ public class PackageListFragment extends Fragment {
                 .getApplication()).providePackagesSubcomponent();
         component.inject(this);
 
-        Log.d("PackageListFragment", "useCase = " + useCase);
+        viewModel = new ViewModelProvider(this, viewModelFactory).get(PackageListViewModel.class);
+        viewModel.load();
     }
 }

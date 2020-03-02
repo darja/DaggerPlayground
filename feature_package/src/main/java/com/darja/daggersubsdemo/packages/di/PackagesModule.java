@@ -13,17 +13,16 @@ import dagger.Provides;
 @SuppressWarnings("WeakerAccess")
 @Module
 public class PackagesModule {
-
-    @PackagesFeatureScope
     @Provides
+    @PackagesFeatureScope
     public PackagesRepository packagesRepository(PackageManager pm) {
+        Log.w("PackagesFeature", "Create new PackagesRepository");
         return new AndroidPackagesRepository(pm);
     }
 
-    @PackagesFeatureScope
     @Provides
-    public GetPackagesUseCase getPackagesUseCase(PackagesRepository repo) {
-        Log.w("PackagesModule", "Create new UseCase");
+    public GetPackagesUseCase getPackagesUseCase(@PackagesFeatureScope PackagesRepository repo) {
+        Log.w("PackagesFeature", "Create new GetPackagesUseCase");
         return new GetPackagesUseCase(repo);
     }
 }

@@ -1,6 +1,7 @@
 package com.darja.daggersubsdemo.packages.domain.usecase;
 
 import android.content.pm.PackageInfo;
+import android.util.Log;
 
 import com.darja.daggersubsdemo.packages.domain.repo.PackagesRepository;
 
@@ -13,7 +14,8 @@ public class GetPackagesUseCase {
         this.repo = repo;
     }
 
-    List<PackageInfo> execute() {
+    public List<PackageInfo> execute() {
+        Log.d("GetPackagesUseCase", "Repository: " + repo);
         return repo.getPackages();
     }
 }

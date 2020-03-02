@@ -10,17 +10,21 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.darja.daggersubsdemo.packages.R;
 import com.darja.daggersubsdemo.packages.di.PackagesSubcomponent;
 import com.darja.daggersubsdemo.packages.di.PackagesSubcomponentProvider;
 import com.darja.daggersubsdemo.packages.domain.usecase.GetPackagesUseCase;
+import com.darja.daggersubsdemo.packages.ui.packagelist.PackageListViewModel;
 
 import javax.inject.Inject;
 
 public class PackageDetailFragment extends Fragment {
     @Inject
-    protected GetPackagesUseCase useCase;
+    protected ViewModelProvider.Factory viewModelFactory;
+
+    private PackageDetailViewModel viewModel;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -30,7 +34,8 @@ public class PackageDetailFragment extends Fragment {
                 .getApplication()).providePackagesSubcomponent();
         component.inject(this);
 
-        Log.d("PackageDetailFragment", "useCase = " + useCase);
+        viewModel = new ViewModelProvider(this, viewModelFactory).get(PackageDetailViewModel.class);
+        viewModel.load();
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

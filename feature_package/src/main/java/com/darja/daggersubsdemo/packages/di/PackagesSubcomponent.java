@@ -5,7 +5,7 @@ import com.darja.daggersubsdemo.packages.ui.packagelist.PackageListFragment;
 
 import dagger.Subcomponent;
 
-@Subcomponent(modules = {PackagesModule.class})
+@Subcomponent(modules = {PackagesModule.class, PackagesViewModelModule.class})
 @PackagesFeatureScope
 public interface PackagesSubcomponent {
     @Subcomponent.Factory
