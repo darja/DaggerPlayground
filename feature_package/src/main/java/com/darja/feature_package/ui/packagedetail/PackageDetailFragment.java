@@ -1,4 +1,4 @@
-package com.darja.feature_package.ui.packagelist;
+package com.darja.feature_package.ui.packagedetail;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,29 +16,12 @@ import com.darja.feature_package.di.PackagesFeatureScope;
 import com.darja.feature_package.di.PackagesSubcomponent;
 import com.darja.feature_package.di.PackagesSubcomponentProvider;
 import com.darja.feature_package.domain.usecase.GetPackagesUseCase;
-import com.darja.feature_package.ui.packagedetail.PackageDetailFragment;
 
 import javax.inject.Inject;
 
-public class PackageListFragment extends Fragment {
+public class PackageDetailFragment extends Fragment {
     @Inject
     protected GetPackagesUseCase useCase;
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_package_list, container, false);
-
-        view.findViewById(R.id.open_details_button).setOnClickListener(button -> {
-            requireActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, new PackageDetailFragment())
-                    .addToBackStack(null)
-                    .commit();
-        });
-
-        return view;
-    }
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -48,6 +31,11 @@ public class PackageListFragment extends Fragment {
                 .getApplication()).providePackagesSubcomponent();
         component.inject(this);
 
-        Log.d("PackageListFragment", "useCase = " + useCase);
+        Log.d("PackageDetailFragment", "useCase = " + useCase);
     }
+
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_package_detail, container, false);
+    }
+
 }

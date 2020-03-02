@@ -9,6 +9,7 @@ import com.darja.feature_package.di.PackagesSubcomponentProvider;
 
 public class DemoApplication extends Application implements PackagesSubcomponentProvider {
     DemoAppComponent appComponent;
+    private PackagesSubcomponent packagesSubcomponent;
 
     @Override
     public void onCreate() {
@@ -18,6 +19,9 @@ public class DemoApplication extends Application implements PackagesSubcomponent
 
     @Override
     public PackagesSubcomponent providePackagesSubcomponent() {
-        return appComponent.packageSubcomponentFactory().create();
+        if (packagesSubcomponent == null) {
+            packagesSubcomponent = appComponent.packageSubcomponentFactory().create();
+        }
+        return packagesSubcomponent;
     }
 }

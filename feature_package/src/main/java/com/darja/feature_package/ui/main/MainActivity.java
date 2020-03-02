@@ -1,12 +1,14 @@
-package com.darja.daggersubsdemo;
+package com.darja.feature_package.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.darja.feature_package.R;
 import com.darja.feature_package.ui.packagelist.PackageListFragment;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
