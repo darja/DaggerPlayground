@@ -1,5 +1,6 @@
 package com.darja.daggersubsdemo.packages.di;
 
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
@@ -13,6 +14,11 @@ import dagger.Provides;
 @SuppressWarnings("WeakerAccess")
 @Module
 public class PackagesModule {
+    @Provides
+    public PackageManager packageManager(Context appContext) {
+        return appContext.getPackageManager();
+    }
+
     @Provides
     @PackagesFeatureScope
     public PackagesRepository packagesRepository(PackageManager pm) {
