@@ -22,25 +22,4 @@ public abstract class PackagesViewModelModule {
     @IntoMap
     @ViewModelKey(value = PackageDetailViewModel.class)
     abstract ViewModel packageDetailViewModel(PackageDetailViewModel viewModel);
-
-
-//    @Provides
-//    public ViewModelProvider.Factory viewModelFactory(Map<Class<? extends ViewModel>, Provider<ViewModel>> providerMap) {
-//        return new ViewModelFactory(providerMap);
-//    }
-
-//    @Provides
-//    @IntoMap
-//    @ViewModelKey(PackageListViewModel.class)
-//    public PackageListViewModel packageListViewModel(GetPackagesUseCase useCase) {
-//        return new PackageListViewModel(useCase);
-//    }
-//
-//    @Provides
-//    @IntoMap
-//    @ViewModelKey(PackageDetailViewModel.class)
-//    public PackageDetailViewModel packageDetailViewModel(GetPackagesUseCase useCase) {
-//        return new PackageDetailViewModel(useCase);
-//    }
-
 }
